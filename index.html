@@ -42,6 +42,15 @@
     <script src="https://cdn.jsdelivr.net/npm/comlink@4.4.1/dist/umd/comlink.min.js"></script>
 
     <script src="./simlib.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./service-worker.js', { scope: './' })
+            .then(reg => console.log('SW Registered!', reg.scope))
+            .catch(err => console.log('SW Failed:', err));
+        });
+    }
+</script>
     <script src="./simwrapper.js"></script>
 
 </body>
